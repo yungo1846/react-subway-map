@@ -1,11 +1,15 @@
 import { useEffect } from 'react';
+import { Redirect } from 'react-router';
 import ContentContainer from '../../components/@commons/ContentContainer/ContentContainer';
-import MapLineListItem from '../../components/Map/MapLineListItem';
+import MapLineListItem from '../../components/MapPage/MapLineListItem';
+import { ROUTE } from '../../constants/constant';
 import useMap from '../../hook/useMap';
+import useUser from '../../hook/useUser';
 import * as S from './Map.styles';
 
 const Map = () => {
   const { mapData, error, resetError } = useMap();
+  const { accessToken } = useUser();
 
   useEffect(() => {
     if (error) {
@@ -14,13 +18,17 @@ const Map = () => {
     }
   }, [error, resetError]);
 
+  if (!accessToken) {
+    return <Redirect to={ROUTE.SIGN_IN} />;
+  }
+
   return (
     <S.Container>
       <ContentContainer hasHat={true}>
         <S.Title>전체보기</S.Title>
         <S.MapContainer>
           {mapData.map(line => (
-            <MapLineListItem line={line} />
+            <MapLineListItem key={line.id} line={line} />
           ))}
         </S.MapContainer>
       </ContentContainer>

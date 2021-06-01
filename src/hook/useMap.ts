@@ -5,11 +5,13 @@ import { getMapAsync, resetError as _resetError } from '../modules/map/mapReduce
 
 const useMap = () => {
   const { mapData, error } = useSelector((state: RootState) => state.map);
+  const { accessToken } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (!accessToken) return;
     dispatch(getMapAsync());
-  }, [dispatch]);
+  }, [dispatch, accessToken]);
 
   const resetError = () => {
     dispatch(_resetError());

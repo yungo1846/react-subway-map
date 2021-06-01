@@ -25,6 +25,7 @@ export const StationLine = styled.div`
   width: 4rem;
   height: 0;
   border: 4px solid ${({ color }) => color};
+  font-size: 0.9rem;
 
   &:last-child {
     border-radius: 0 1rem 1rem 0;
@@ -40,7 +41,7 @@ export const StationName = styled.div`
   transform: rotate(-45deg);
 `;
 
-export const StationDot = styled.div`
+export const StationDot = styled.div<{ hasTransferLines: boolean }>`
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -49,4 +50,6 @@ export const StationDot = styled.div`
   border-radius: 50% 50%;
   border: 2px solid black;
   background-color: white;
+  ${({ hasTransferLines }) =>
+    hasTransferLines ? `background-image: url('assets/transfer-station.png'); background-position: center;` : ''}
 `;

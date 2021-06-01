@@ -11,9 +11,9 @@ const MapLineListItem = ({ line }: Props) => {
       <S.LineContainer>
         <S.LineName color={line.color}>{line.name}</S.LineName>
         {line.stations.map(station => (
-          <S.StationLine color={line.color}>
+          <S.StationLine key={station.id} color={line.color}>
             <S.StationName>{station.name}</S.StationName>
-            <S.StationDot></S.StationDot>
+            <S.StationDot hasTransferLines={station.transferLines.length > 0} />
           </S.StationLine>
         ))}
       </S.LineContainer>

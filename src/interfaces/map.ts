@@ -4,7 +4,7 @@ export interface MapStation {
   id: Station['id'];
   name: Station['name'];
   distance: Section['distance'];
-  transferLine: Line[];
+  transferLines: Line[];
 }
 
 export interface MapLine {
