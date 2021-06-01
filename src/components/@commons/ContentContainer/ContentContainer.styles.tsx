@@ -3,8 +3,7 @@ import { SIZE } from '../../../constants/styleConstant';
 import { Props } from './ContentContainer';
 
 export const ContentContainer = styled.section<Props>`
-  max-width: ${SIZE.PAGE_MAX_WIDTH};
-  min-width: ${SIZE.PAGE_MIN_WIDTH};
+  width: ${SIZE.PAGE_MIN_WIDTH};
   height: fit-content;
   margin: 1.5rem;
   margin-top: 0;

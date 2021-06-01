@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from './modules';
 import { useEffect } from 'react';
 import Home from './pages/Home/Home';
+import Map from './pages/Map/Map';
 
 const App = () => {
   const { accessToken } = useSelector((state: RootState) => state.user);
@@ -37,6 +38,7 @@ const App = () => {
           <Route exact path={ROUTE.SIGN_UP} component={SignUp} />
           <Route exact path={ROUTE.STATION} component={Station} />
           <Route exact path={ROUTE.LINE} component={Line} />
+          <Route exact path={ROUTE.MAP} component={Map} />
           <Route exact path={ROUTE.SECTION} component={Section} />
         </Switch>
       </S.Container>
