@@ -14,5 +14,7 @@ export const Title = styled.h2`
 export const MapContainer = styled.div`
   width: 100%;
   display: flex;
+  position: relative;
   flex-direction: column;
+  padding-right: 0.7rem;
 `;

@@ -3,6 +3,9 @@ import styled from '@emotion/styled';
 export const MapLineListItem = styled.div`
   width: 100%;
   padding: 3rem 0;
+  &:last-child {
+    margin-bottom: 5rem;
+  }
 `;
 
 export const LineContainer = styled.div`
@@ -26,7 +29,6 @@ export const StationLine = styled.div`
   height: 0;
   border: 4px solid ${({ color }) => color};
   font-size: 0.9rem;
-
   &:last-child {
     border-radius: 0 1rem 1rem 0;
   }
@@ -50,6 +52,64 @@ export const StationDot = styled.div<{ hasTransferLines: boolean }>`
   border-radius: 50% 50%;
   border: 2px solid black;
   background-color: white;
+  ${({ hasTransferLines }) => (hasTransferLines ? `cursor: pointer;` : '')}
   ${({ hasTransferLines }) =>
     hasTransferLines ? `background-image: url('assets/transfer-station.png'); background-position: center;` : ''}
+`;
+
+export const Bubble = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: -0.2rem;
+  top: 1.5rem;
+  width: 200px;
+  padding: 0px;
+  z-index: 99;
+  background: #ffffff;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: #7f7f7f solid 2px;
+
+  &:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 10px 10px;
+    border-color: #ffffff transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    top: -10px;
+    left: 20px;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 11px 11px;
+    border-color: #7f7f7f transparent;
+    display: block;
+    width: 0;
+    z-index: 0;
+    top: -13px;
+    left: 19px;
+  }
+`;
+
+export const BubbleTitle = styled.div`
+  margin: 1rem 0;
+  font-size: 1rem;
+`;
+
+export const TransferLineName = styled.div`
+  width: fit-content;
+  height: fit-content;
+  border: 3px solid ${({ color }) => color};
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 1rem;
 `;
