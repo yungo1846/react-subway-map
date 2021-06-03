@@ -64,9 +64,10 @@ export const Bubble = styled.div`
   position: absolute;
   left: -0.2rem;
   top: 1.5rem;
-  width: 200px;
+  min-width: 8rem;
   padding: 0px;
   z-index: 99;
+  padding: 1rem 1rem 0 1rem;
   background: #ffffff;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -101,13 +102,14 @@ export const Bubble = styled.div`
 `;
 
 export const BubbleTitle = styled.div`
-  margin: 1rem 0;
+  margin-bottom: 1rem;
   font-size: 1rem;
 `;
 
 export const TransferLineName = styled.div`
   width: fit-content;
   height: fit-content;
+  white-space: nowrap;
   border: 3px solid ${({ color }) => color};
   padding: 0.25rem 0.5rem;
   margin-bottom: 0.5rem;

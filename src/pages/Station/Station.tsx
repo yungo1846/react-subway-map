@@ -32,8 +32,8 @@ const Station = () => {
       </ContentContainer>
       <ContentContainer>
         <S.StationList>
-          {stations.map(({ id, name }) => (
-            <StationListItem key={id} name={name} id={id} deleteStation={deleteStation} />
+          {stations.map(station => (
+            <StationListItem key={station.id} station={station} deleteStation={deleteStation} />
           ))}
         </S.StationList>
       </ContentContainer>

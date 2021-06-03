@@ -2,8 +2,8 @@ import { REGEXP } from '../../constants/regularExpression';
 import { Line } from '../../interfaces';
 
 export const getLineNameErrorMessage = (name: string, lines: Line[]) => {
-  if (!(2 <= name.length && name.length <= 20)) {
-    return '노선 이름은 최소 2글자 이상 20글자 이하여야 합니다.';
+  if (!(2 <= name.length && name.length <= 10)) {
+    return '노선 이름은 최소 2글자 이상 10글자 이하여야 합니다.';
   }
 
   if (!(REGEXP.KOR.test(name) || REGEXP.NUMBER.test(name))) {

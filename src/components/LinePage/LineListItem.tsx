@@ -17,6 +17,9 @@ const LineListItem = ({ name, id, color, deleteLine }: Props) => {
 
   return (
     <S.LineListItem>
+      <S.LineColorCircleContainer>
+        <S.LineColorCircle color={color} />
+      </S.LineColorCircleContainer>
       <S.Name>{name}</S.Name>
       <S.ButtonContainer>
         <S.ButtonWrapper>
