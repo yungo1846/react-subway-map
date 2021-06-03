@@ -5,8 +5,10 @@ import {
   pending,
   addStationAsync,
   deleteStationAsync,
+  editStationAsync,
   AddStationPayload,
   DeleteStationPayload,
+  EditStationPayload,
 } from './stationReducer';
 import { call, takeLatest, put, select } from 'redux-saga/effects';
 import { stationAPI } from '../../api/station';
@@ -27,6 +29,10 @@ interface AddStationResult {
 }
 
 interface DeleteStationResult {
+  error: string;
+}
+
+interface EditStationResult {
   error: string;
 }
 
@@ -69,8 +75,21 @@ export function* deleteStationSaga(action: PayloadAction<DeleteStationPayload>) 
   yield put(setStations(stations.filter(station => station.id !== action.payload)));
 }
 
+export function* editStationSaga(action: PayloadAction<EditStationPayload>) {
+  yield put(pending());
+  const result: EditStationResult = yield call(stationAPI.editStation, action.payload.id, action.payload.name);
+
+  if (result.error) {
+    yield put(error(result.error));
+    return;
+  }
+
+  yield put(getStationsAsync());
+}
+
 export function* stationSaga() {
   yield takeLatest(getStationsAsync.type, getStationsSaga);
   yield takeLatest(addStationAsync.type, addStationSaga);
   yield takeLatest(deleteStationAsync.type, deleteStationSaga);
+  yield takeLatest(editStationAsync.type, editStationSaga);
 }

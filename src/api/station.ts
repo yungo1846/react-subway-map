@@ -54,4 +54,19 @@ export const stationAPI = {
       return { error: error.message ?? RESPONSE.FAILURE };
     }
   },
+
+  editStation: async (id: Station['id'], stationName: Station['name']) => {
+    try {
+      const data = { name: stationName };
+      const response = await axios.put(`${API.GET_STATIONS()}/${id}`, data);
+
+      if (response.status >= 400) {
+        throw new Error('역 이름 변경에 실패하였습니다.');
+      }
+
+      return {};
+    } catch (error) {
+      return { error: error.message ?? RESPONSE.FAILURE };
+    }
+  },
 };

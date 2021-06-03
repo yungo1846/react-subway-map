@@ -11,7 +11,7 @@ import useUser from '../../hook/useUser';
 import * as S from './Station.styles';
 
 const Station = () => {
-  const { stations, addStation, deleteStation, error, resetError } = useStation();
+  const { stations, addStation, deleteStation, editStation, error, resetError } = useStation();
   const { accessToken } = useUser();
 
   useEffect(() => {
@@ -33,7 +33,12 @@ const Station = () => {
       <ContentContainer>
         <S.StationList>
           {stations.map(station => (
-            <StationListItem key={station.id} station={station} deleteStation={deleteStation} />
+            <StationListItem
+              key={station.id}
+              station={station}
+              deleteStation={deleteStation}
+              editStation={editStation}
+            />
           ))}
         </S.StationList>
       </ContentContainer>
